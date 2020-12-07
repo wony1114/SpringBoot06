@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>LIST</h1>
+    <a href="#" id="home">Go Home</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">글번호</th>
+                <th class="text-center">제목</th>
+                <th class="text-center">글쓴이</th>
+                <th class="text-center">작성일</th>
+                <th class="text-center">조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">1</th>
+                <td class="text-center">테스트</th>
+                <td class="text-center">홍길동</th>
+                <td class="text-center">2020-12-07</th>
+                <td class="text-center">10</th>
+            </tr>  
+        </tbody>
+</body>
+<script>
+    document.getElementById('home').addEventListener('click', e=>{
+        location.href="/"
+    })
+</script>
+</html>
