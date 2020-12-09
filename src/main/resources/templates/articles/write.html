@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table {border:1px solid black}
+        table tr{border:1px solid black}
+        table tr td{border:1px solid black}
+        table tr th{border:1px solid black}
+    </style>
 </head>
 <body>
     <h1>WRITE</h1>
@@ -23,27 +29,32 @@
         </div>
         <button id="write-btn" class="btn btn-secondary mb-3">제출하기</button>
     </form>
-</body>
 <script>
-    document.getElementById('home').addEventListener('click', e=>{
-        location.href="/"
-    })
-    document.getElementById('write-btn').addEventListener('click', e=>{
+    document.getElementById('home').addEventListener('click', e => { location.href="/"})
+    document.getElementById('write-btn').addEventListener('click', e => { 
         $.ajax({
             url: '/articles',
             type: 'POST',
             data: JSON.stringify({
-                writerId: document.getElementById('writeId').value,
+                writerId: document.getElementById('writerId').value,
                 title: document.getElementById('title').value,
                 content: document.getElementById('content').value
             }),
             dataType: 'json',
             contentType: 'application/json',
-            success: d=>{},
-            error: e=>{
+            success: d => {
+                if(d.message === 'SUCCESS'){
+                    location.href = "/move/articles/list"
+                }else{
+                    alert(`글쓰기 실패했습니다. 다시 시도해 주세요`)
+                    location.href = "/move/articles/write"
+                }
+            },
+            error: e => {
                 alert(`글쓰기 에러 ${e}`)
-            }
+                }
+            })
         })
-    })
 </script>
+</body>
 </html>

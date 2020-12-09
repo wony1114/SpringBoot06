@@ -1,6 +1,7 @@
 package com.example.demo.impls;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.example.demo.domains.ArticleDto;
 import com.example.demo.repositories.ArticleRepository;
@@ -12,13 +13,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
-    @Autowired ArticleRepository articleRepository;
-    @Autowired Printer printer;
+    @Autowired
+    ArticleRepository articleRepository;
+    @Autowired
+    Printer printer;
+
     @Override
     public int write(ArticleDto article) {
         article.setRegDate(LocalDate.now().toString());
-        printer.accept("서비스로 전송된 데이터: "+article.toString());
+        printer.accept("서비스로 전송된 데이터: " + article.toString());
         return articleRepository.insert(article);
+    }
+
+    @Override
+    public List<ArticleDto> list() {
+        
+        return null;
+    }
+
+    @Override
+    public int crawling(String string) {
+        
+        return 0;
     }
    
 }

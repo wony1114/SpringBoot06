@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ArticleRepository {
 
-	int insert(ArticleDto article);
+	public int insert(ArticleDto article);
 
 }

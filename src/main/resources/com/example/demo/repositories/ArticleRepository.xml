@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repositories.ArticleRepository">
     <insert id="insert" parameterType="com.example.demo.domains.ArticleDto">
-    insert into articles(art_num, writer_id, title, content, reg_date, count)
-    values ( #{writerId}, #{title}, #{content}, #{regDate}, #{count})
-    </insert>
+        insert into articles (writer_id, title, content, reg_date, count) 
+        values (#{writerId}, #{title}, #{content}, #{regDate}, #{count})
+   </insert>
 </mapper>

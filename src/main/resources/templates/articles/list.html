@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table {border:1px solid black}
+        table tr{border:1px solid black}
+        table tr td{border:1px solid black}
+        table tr th{border:1px solid black}
+    </style>
 </head>
 <body>
     <h1>LIST</h1>
@@ -28,10 +34,12 @@
                 <td class="text-center">10</th>
             </tr>  
         </tbody>
-</body>
+        </table>
 <script>
-    document.getElementById('home').addEventListener('click', e=>{
-        location.href="/"
+    document.getElementById('home').addEventListener('click', e=>{location.href="/"})
+    $.getJSON('/articles/crawling', d =>{
+
     })
 </script>
+</body>
 </html>
