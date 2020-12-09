@@ -15,6 +15,6 @@ public interface ArticleService {
 
 	public int crawling(String string);
 
-	
+	public int count();
 
 }

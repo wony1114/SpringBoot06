@@ -6,20 +6,20 @@
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        table {border:1px solid black}
-        table tr{border:1px solid black}
-        table tr td{border:1px solid black}
-        table tr th{border:1px solid black}
+        table {border: black 1px solid}
+        table tr {border: black 1px solid}
+        table tr td {border: black 1px solid}
+        table tr th {border: black 1px solid}
     </style>
 </head>
 <body>
-    <h1>WRITE</h1>
-    <a href="#" id="home">Go Home</a>
+    <h1> Write </h1>
+    <a id="home" href="#"> Go Home </a>
     <form>
-        <input id="writeId" type="text" name="bdTitle" class="form-control mt-4 mb-2"
-            placeholder="ID를 입력해주세요." required
+        <input id="writerId" type="text" name="bdTitle" class="form-control mt-4 mb-2"
+            placeholder="ID을 입력해주세요." required
         ><br/>
-        <input id="title" type="text" name="bdTitle" class="form-control mt-4 mb-2"
+        <input id="title"  type="text" name="bdTitle" class="form-control mt-4 mb-2"
             placeholder="제목을 입력해주세요." required
         >
         <div class="form-group">
@@ -29,32 +29,33 @@
         </div>
         <button id="write-btn" class="btn btn-secondary mb-3">제출하기</button>
     </form>
-<script>
-    document.getElementById('home').addEventListener('click', e => { location.href="/"})
-    document.getElementById('write-btn').addEventListener('click', e => { 
-        $.ajax({
-            url: '/articles',
-            type: 'POST',
-            data: JSON.stringify({
-                writerId: document.getElementById('writerId').value,
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value
-            }),
-            dataType: 'json',
-            contentType: 'application/json',
-            success: d => {
-                if(d.message === 'SUCCESS'){
-                    location.href = "/move/articles/list"
-                }else{
-                    alert(`글쓰기 실패했습니다. 다시 시도해 주세요`)
-                    location.href = "/move/articles/write"
-                }
-            },
-            error: e => {
-                alert(`글쓰기 에러 ${e}`)
+    <script>
+        document.getElementById('home').addEventListener('click', e => { location.href="/"})
+        document.getElementById('write-btn').addEventListener('click', e => { 
+            $.ajax({
+                url: '/articles',
+                type: 'POST',
+                data: JSON.stringify({
+                    writerId: document.getElementById('writerId').value,
+                    title: document.getElementById('title').value,
+                    content: document.getElementById('content').value
+                }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: d => {
+                    if(d.message === 'SUCCESS'){
+                        location.href = "/move/articles/list"
+                    }else{
+                        alert(`글쓰기 실패했습니다. 다시 시도해 주세요`)
+                        location.href = "/move/articles/write"
+                    }
+                    
+                },
+                error: e => {
+                    alert(`글쓰기 에러 ${e}`)
                 }
             })
         })
-</script>
+   </script>
 </body>
 </html>

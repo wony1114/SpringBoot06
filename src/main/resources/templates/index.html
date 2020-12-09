@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>HOME</h1>
@@ -13,17 +14,15 @@
     <a href="#" id="detail">글 상세</a>
     <a href="#" id="update">글 수정</a>
 <script>
-    document.getElementById('write').addEventListener('click', e=>{
-        location.href="move/articles/write"
-    })
-    document.getElementById('crawling').addEventListener('click', e=>{
+    $('#write').click(e=>{location.href="move/articles/write"})
+    $('#crawling').click(e=>{
         $.getJSON(`/articles/crawling/bugs`, d =>{
             alert(`등록된 게시글 수: ${d.count}`)
         })
     })
-    document.getElementById('list').addEventListener('click', e=>{location.href="move/articles/list"})
-    document.getElementById('detail').addEventListener('click', e=>{location.href="move/articles/detail"})
-    document.getElementById('update').addEventListener('click', e=>{location.href="move/articles/update"})
+    $('#list').click(e=>{location.href="move/articles/list"})
+    $('#detail').click(e=>{location.href="move/articles/detail"})
+    $('#update').click(e=>{location.href="move/articles/update"})
 </script>
 </body>
 </html>
