@@ -11,8 +11,6 @@
     <a href="#" id="write">글 쓰기</a>
     <a href="#" id="crawling">웹 크롤링</a>
     <a href="#" id="list">글 목록</a>
-    <a href="#" id="detail">글 상세</a>
-    <a href="#" id="update">글 수정</a>
 <script>
     $('#write').click(e=>{location.href="move/articles/write"})
     $('#crawling').click(e=>{
@@ -20,9 +18,7 @@
             alert(`등록된 게시글 수: ${d.count}`)
         })
     })
-    $('#list').click(e=>{location.href="move/articles/list"})
-    $('#detail').click(e=>{location.href="move/articles/detail"})
-    $('#update').click(e=>{location.href="move/articles/update"})
+    $('#list').click(e=>{location.href="move/articles/list"})   
 </script>
 </body>
 </html>

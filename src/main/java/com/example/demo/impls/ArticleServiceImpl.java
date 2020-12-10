@@ -13,6 +13,7 @@ import com.example.demo.utils.Printer;
 import com.example.demo.utils.UserGenerator;
 import com.example.demo.utils.Box;
 import com.example.demo.utils.Crawler;
+import com.example.demo.utils.MyList;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -36,19 +37,19 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int crawling(String url) {
-        var artBox = new Box<ArticleDto>();
-        artBox = crawler.crawling(url);
-        System.out.println("box size: "+artBox.size());
+        var artMyList = new MyList<ArticleDto>();
+        artMyList = crawler.crawling(url);
+        System.out.println("box size: "+artMyList.size());
         
-        for(int i =0; i< artBox.size(); i++){
+        for(int i =0; i< artMyList.size(); i++){
             article = new ArticleDto();
-            article = artBox.get(i);
+            article = artMyList.get(i);
             System.out.println("Article : "+article.toString());
             String userid = ug.makeUserid();
             System.out.println("글쓴이 아이디: "+userid);
             article.setWriterId(ug.makeUserid()); 
             article.setCount("0");
-            write(artBox.get(i));
+            write(artMyList.get(i));
         }
         return count();
     }
@@ -56,6 +57,27 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int count() {
         return articleRepository.count();
+    }
+
+    @Override
+    public ArticleDto getArticleById(String artNum) {
+        return articleRepository.selectById(artNum);
+    }
+
+    @Override
+    public int increaseCount(String artNum) {
+        return articleRepository.updateCount(artNum);
+    }
+
+    @Override
+    public int update(ArticleDto article) {
+        
+        return articleRepository.update(article);
+    }
+
+    @Override
+    public int delete(ArticleDto article) {
+        return articleRepository.delete(article);
     }
     
 

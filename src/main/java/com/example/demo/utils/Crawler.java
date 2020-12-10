@@ -16,7 +16,8 @@ public class Crawler extends Proxy {
     @Autowired Printer printer;
     @Autowired Box<ArticleDto> artBox;
     @Autowired ArticleDto article;
-    public Box<ArticleDto> crawling(String url){
+    @Autowired MyList<ArticleDto> artMyList;
+    public MyList<ArticleDto> crawling(String url){
         printer.accept("크롤링 대상 URL : "+url);
         try{
             Document rawData = Jsoup.connect(url).timeout(10*100).get();
@@ -27,11 +28,11 @@ public class Crawler extends Proxy {
                 article.setTitle(titles.get(i).text());
                 article.setContent(contents.get(i).text());
                 printer.accept("크롤링된 게시글"+i+"번: "+article.toString());
-                artBox.add(article);  
+                artMyList.add(article);  
             }      
         }catch(Exception e){
             e.printStackTrace();
         }          
-        return artBox;
+        return artMyList;
     }
 }

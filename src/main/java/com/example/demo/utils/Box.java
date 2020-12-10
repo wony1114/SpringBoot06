@@ -17,4 +17,5 @@ public class Box<T> {
     public int size(){return list.size();}
     public String toString(){return list.toString();}
     public void clear(){list.clear();}
+    public boolean contains(T t){return list.contains(t);}
 }

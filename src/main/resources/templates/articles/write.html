@@ -30,15 +30,15 @@
         <button id="write-btn" class="btn btn-secondary mb-3">제출하기</button>
     </form>
     <script>
-        document.getElementById('home').addEventListener('click', e => { location.href="/"})
-        document.getElementById('write-btn').addEventListener('click', e => { 
+        $('#home').click(e => { location.href="/"})
+        $('#write-btn').click(e => { 
             $.ajax({
                 url: '/articles',
                 type: 'POST',
                 data: JSON.stringify({
-                    writerId: document.getElementById('writerId').value,
-                    title: document.getElementById('title').value,
-                    content: document.getElementById('content').value
+                    writerId: $('#writerId').val(),
+                    title: $('#title').val(),
+                    content: $('#content').val()
                 }),
                 dataType: 'json',
                 contentType: 'application/json',

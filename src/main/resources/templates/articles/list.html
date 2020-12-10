@@ -52,7 +52,11 @@
                         e.preventDefault()
                         alert(`${i} 번의 ID:  ${this.id}`)
                         localStorage.setItem('artNum', `${this.id}`)
-                        location.href = '/move/articles/detail'
+                        $.getJSON(`/articles/${this.id}/count`, d=>{
+                            if(d.message === 'SUCCESS'){
+                                location.href = '/move/articles/detail'
+                            }                           
+                        })
                     })
                 })
             }else{

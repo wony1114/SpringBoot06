@@ -17,4 +17,12 @@ public interface ArticleService {
 
 	public int count();
 
+	public ArticleDto getArticleById(String artNum);
+
+	public int increaseCount(String artNum);
+
+	public int update(ArticleDto article);
+
+	public int delete(ArticleDto article);
+
 }
